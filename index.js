@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const WOKcommands = require('wokcommands')
 const config = require('./config.json')
+const path = require('path')
 
 const client = new Discord.Client()
 const guildID = 'GUILDID if you want the command to be instantly added'
@@ -16,7 +17,7 @@ const getApp = (guildID) => {
 }
 client.on('ready', async () => {
     new WOKcommands(client, {
-        commandsDir: 'commands',
+        commandsDir: path.join(__dirname, 'commands'),
         testServers: [guildID],
         showWarns: false
     })
